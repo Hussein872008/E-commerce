@@ -28,7 +28,7 @@ const ProductList = () => {
 
   return (
     <div className="container mx-auto px-8 py-8 bg-gradient-to-r from-blue-500 to-indigo-700 min-h-screen">
-      <h1 className="text-4xl font-extrabold text-center text-white mb-10">
+      <h1 className="text-4xl font-extrabold text-center text-white mb-10 pt-[70px]">
         Product List
       </h1>
       

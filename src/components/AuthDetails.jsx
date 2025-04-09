@@ -1,12 +1,11 @@
-
 import React, { useEffect, useState, useCallback } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "./FireBase";  
+import { auth } from "./FireBase";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext"; 
+import { useAuth } from "./AuthContext";
 
 const AuthDetails = () => {
-  const { authUser, loading } = useAuth(); 
+  const { authUser, loading } = useAuth();  // استيراد الـ Context
   const navigate = useNavigate();
 
   const userSignOut = useCallback(() => {
@@ -22,6 +21,17 @@ const AuthDetails = () => {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
         <p className="text-lg text-gray-600">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!authUser) {  // لو مش مسجل دخول، ممكن تحولهم للـ login
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <p className="text-lg text-gray-600">
+          You need to sign in first. Redirecting to login...
+        </p>
+        {navigate("/login", { replace: true })}
       </div>
     );
   }
